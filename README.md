@@ -10,14 +10,24 @@ This project establishes an automated, cloud-based data pipeline to ingest, mode
 * **Database Engine:** DuckDB (In-Memory ANSI SQL)
 * **Data Source:** Australian Bureau of Statistics (ABS) SDMX REST API
 * **Data Processing & Visualization:** `pandas`, `requests`, `matplotlib`, `seaborn`
+* **Version Control:** GitHub
 
 ---
 
-## Data Pipeline Pipeline (ETL Workflow)
+## Data Pipeline (ETL Workflow)
 1. **Extract:** Programmatically pull live CSV/SDMX price index payloads directly from the official ABS API endpoint (`https://data.api.abs.gov.au/`).
 2. **Transform:** Stream HTTP responses using Python's `requests` and `io.StringIO` modules to register raw structures into DuckDB tables dynamically.
 3. **Load & Query:** Execute analytical SQL queries featuring **Common Table Expressions (CTEs)** and the **`LAG()` window function** to derive period-over-period index shifts.
 4. **Visualize:** Pass structured query outputs to `seaborn` and `matplotlib` to render dual-axis trend visualizations.
+
+---
+
+## Visualisation
+
+![CPI Inflation Trend & Monthly Acceleration](cpi_inflation_chart.png)
+
+* **Primary Axis (Line Chart):** Tracks the overall trajectory of the CPI index across periods.
+* **Secondary Axis (Bar Chart):** Displays month-over-month percentage changes (`mom_inflation_rate_pct`) to highlight inflation momentum.
 
 ---
 
@@ -42,4 +52,3 @@ SELECT
     ) AS mom_inflation_rate_pct
 FROM cpi_data
 ORDER BY period DESC;
-
