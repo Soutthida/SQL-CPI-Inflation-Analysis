@@ -42,3 +42,6 @@ SELECT
     ) AS mom_inflation_rate_pct
 FROM cpi_data
 ORDER BY period DESC;
+## Visualisation
+
+![CPI Inflation Trend Chart](cpi_inflation_chart.png)
