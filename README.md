@@ -43,8 +43,3 @@ SELECT
 FROM cpi_data
 ORDER BY period DESC;
 
----
-
-## Visualisation
-
-![CPI Inflation Trend Chart](cpi_inflation_chart.png)
